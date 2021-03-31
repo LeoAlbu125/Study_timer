@@ -16,15 +16,15 @@ print(f"To cancel the clock press '{cancel_timer}' key")
 
 while not kb.is_pressed(cancel_timer):
 
-    t30 = 1800
-    t5 = 300
+    t30 = 10
+    t5 = 10
 
     while (t30 > 0 and not kb.is_pressed(cancel_timer)):
         t30 -= 1
         time.sleep(1)
     
     if t30 == 0:
-        playsound(str(os.path.abspath(__file__))+r"\Beep\violin_jingle.wav")
+        playsound(str(os.path.dirname(__file__))+r"\Beep\violin_jingle.wav")
         print("teste")
 
     while (t5 > 0 and not kb.is_pressed(cancel_timer)):
@@ -32,7 +32,7 @@ while not kb.is_pressed(cancel_timer):
         time.sleep(1)
 
     if t30 == 0 and t5 == 0:    
-        playsound(str(os.path.abspath(__file__))+r"\Beep\short.wav")
+        playsound(str(os.path.dirname(__file__))+r"\Beep\short.wav")
 
 
 
