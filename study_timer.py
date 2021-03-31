@@ -1,6 +1,6 @@
 #UTF-8
 #Made by Leonardo Albuquerque de Abreu 
-
+import os
 from playsound import playsound
 import pathlib
 import keyboard as kb
@@ -10,27 +10,29 @@ sq = 0       #Conta as repeticoes do ciclo estudo & descanco
 
 t0 = time.time()
 
+cancel_timer = "shift+home"
 
+print(f"To cancel the clock press '{cancel_timer}' key")
 
-
-while not kb.is_pressed("ctrl"):
+while not kb.is_pressed(cancel_timer):
 
     t30 = 1800
     t5 = 300
 
-    while (t30 > 0 and not kb.is_pressed("ctrl")):
+    while (t30 > 0 and not kb.is_pressed(cancel_timer)):
         t30 -= 1
         time.sleep(1)
     
+    if t30 == 0:
+        playsound(str(os.path.abspath(__file__))+r"\Beep\violin_jingle.wav")
+        print("teste")
 
-    playsound(str(pathlib.Path().absolute())+r"\Beep\violin_jingle.wav")
-    print("teste")
-
-    while (t5 > 0 and not kb.is_pressed("ctrl")):
+    while (t5 > 0 and not kb.is_pressed(cancel_timer)):
         t5 -= 1
         time.sleep(1)
-        
-    playsound(str(pathlib.Path().absolute())+r"\Beep\short.wav")
+
+    if t30 == 0 and t5 == 0:    
+        playsound(str(os.path.abspath(__file__))+r"\Beep\short.wav")
 
 
 
